@@ -1,25 +1,35 @@
 <?php
 session_start();  // démarrage d'une session
+//session_destroy();
 
 // on vérifie que les variables de session identifiant l'utilisateur existent
 if (isset($_SESSION['login'])) {
     $username = $_SESSION['login'];
-    $_SESSION['tableau']=array();
-    
-    $_SESSION['tableau']['question']= array();
-    $_SESSION['tableau']['reponse']= array();
-    $_SESSION['tableau']['score']= array();
-    $_SESSION['tableau']['type']= array();
-    $_SESSION['tableau']['bonnereponse']= array();
-                          if (isset($_POST['valider'])) {
+         if (isset($_POST['valider'])) {
                             $qcm=$_POST['qcm'];
-                            $reponse=$_POST['reponse'];
+                            $nbrep=$_POST['nbrep'];
                             $score=$_POST['score'];
-                            $type=$_POST['type'];
-                            $bonnereponse=$_POST['bonnereponse$bonnereponse'];
-                            foreach($_POST as $key) {
-                                array_push($_SESSION['tableau']['question'], $key);
+                            $type=$_POST['choixquest'];
+                            $reponse=array();
+                            $bonnereponse=array();
+
+                            for ($i=1; $i <= $nbrep; $i++) { 
+                                $reponse=$_POST['reponse'.$i];
+                                if (in_array( ('rep'.$i) , $_POST['check']) ) {
+                                    $bonnereponse[]=$_POST['reponse'.$i];
+                                }
                             }
+                            $question=[
+                                'question'=>$qcm,
+                                'nbrep'=>$nbrep,
+                                'reponse' =>$reponse,
+                                'score'=>$score,
+                                'type'=>$type,
+                                'bonnereponse' =>$bonnereponse
+                            ];
+
+                            $_SESSION['tableau'][]=$question;
+                            var_dump($_SESSION['tableau']);   
                           }
 }
 ?>
@@ -84,7 +94,7 @@ if (isset($_SESSION['login'])) {
                         temp="";
                     for (let index = 0; index < parseInt(id_nbrep.value); index++) {
 
-                        temp+="<div cla><label> Reponse "+(index+1)+"</label> <input type='text' name=''/> <input type='checkbox'/></div>";
+                        temp+="<div cla><label> Reponse "+(index+1)+"</label> <input type='text' name='reponse"+(index+1)+"'/> <input type='checkbox' name='check[]' value='rep"+(index+1)+"'/></div>";
                     }
                     element.innerHTML=temp;
                 }
