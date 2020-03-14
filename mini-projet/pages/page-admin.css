@@ -1,0 +1,50 @@
+.header{
+    background-color: #24FE41;
+    color: white;
+    width: 50%;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+.formulaire{
+    width: 50%;
+    margin: 0 auto;
+    background-color:white;
+    font-family: arial;
+}
+form{
+    width: 80%;
+    background-color: rgb(243, 237, 237);
+    margin: 0 auto;
+    padding: 10px;
+    font-family: arial;
+}
+.questtion{
+    padding-top: 20px;
+    font-family: arial;
+    width: 100%;
+}
+.questtion .titre-qcm{
+    width: 20%;
+    float: left;
+}
+.questtion .qcm{
+    width: 60%;
+}
+.valider{
+    border: none;
+    background-color: #24FE41;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+input, select{
+    padding: 10px;
+}
+label{
+    font-family: arial;
+}

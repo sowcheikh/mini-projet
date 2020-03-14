@@ -1,0 +1,142 @@
+<?php
+session_start();  // démarrage d'une session
+
+// on vérifie que les variables de session identifiant l'utilisateur existent
+if (isset($_SESSION['login'])) {
+    $username = $_SESSION['login'];
+    $_SESSION['tableau']=array();
+    
+    $_SESSION['tableau']['question']= array();
+    $_SESSION['tableau']['reponse']= array();
+    $_SESSION['tableau']['score']= array();
+    $_SESSION['tableau']['type']= array();
+    $_SESSION['tableau']['bonnereponse']= array();
+                          if (isset($_POST['valider'])) {
+                            $qcm=$_POST['qcm'];
+                            $reponse=$_POST['reponse'];
+                            $score=$_POST['score'];
+                            $type=$_POST['type'];
+                            $bonnereponse=$_POST['bonnereponse$bonnereponse'];
+                            foreach($_POST as $key) {
+                                array_push($_SESSION['tableau']['question'], $key);
+                            }
+                          }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page admin</title>
+    <link rel="stylesheet" href="page-admin.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
+    <script>
+        
+        window.addEventListener('load', function () {
+
+            
+            var element = document.getElementById('cmult');
+            element.style.display="none";
+            var element1 = document.getElementById('csimple');
+            element1.style.display="none";
+            var element2 = document.getElementById('ctexte');
+            element2.style.display="none";
+        });
+        function changement() {
+                var x = document.getElementById('choixquest').value;
+                if(x=="multiple"){
+                    var element = document.getElementById('cmult');
+                    element.style.display="block";
+                    var element1 = document.getElementById('csimple');
+                    element1.style.display="none";
+                    var element2 = document.getElementById('ctexte');
+                    element2.style.display="none";
+                }
+                if (x=="simple"){
+                    var element = document.getElementById('cmult');
+                    element.style.display="none";
+                    var element1 = document.getElementById('csimple');
+                    element1.style.display="block";
+                    var element2 = document.getElementById('ctexte');
+                    element2.style.display="none";
+                }
+                if(x=="text"){
+                    var element = document.getElementById('cmult');
+                    element.style.display="none";
+                    var element1 = document.getElementById('csimple');
+                    element1.style.display="none";
+                    var element2 = document.getElementById('ctexte');
+                    element2.style.display="block";
+                }
+            }
+
+            function recuperer(){
+                var id_nbrep=document.getElementById('nbrep');
+                if(id_nbrep.value==""){
+                    alert("Donner le nombre de reponses svp");
+                }
+                else{
+                    var element = document.getElementById('cmult');
+                        element.style.display="block";
+                        temp="";
+                    for (let index = 0; index < parseInt(id_nbrep.value); index++) {
+
+                        temp+="<div cla><label> Reponse "+(index+1)+"</label> <input type='text' name=''/> <input type='checkbox'/></div>";
+                    }
+                    element.innerHTML=temp;
+                }
+            }
+        
+        </script>
+</head>
+
+<body>
+    <div class="header">
+        <?php
+        if (isset($_SESSION['login'])) {
+            echo 'Bienvenue ' . $username . " sur la plateforme d'édition des questionnaire";
+        }
+        ?>
+    </div>
+    <div class="formulaire">
+        <form action="" method="post">
+            <div class="questtion">
+                <div class="titre-qcm">
+                    <h2>Questions</h2>
+                </div>
+                <div class="qcm">
+                    <textarea name="qcm" id="" cols="30" rows="10"></textarea>
+                </div>
+
+            </div>
+            <label>Score</label>
+            <input type="text" name="score"><br><br>
+            <label>Type</label>
+            <select name="choixquest" id="choixquest" onchange="changement()" id="choix">
+                <option value="multiple" id="">choix multiple</option>
+                <option value="simple">choix simple</option>
+                <option value="text">choix texte</option>
+            </select><br><br>
+            <div class="container2">
+                <label for="nbrep">Nb réponse</label>
+                <input type="text" name="nbrep" id="nbrep" onfocusout="recuperer()">
+            </div>
+
+            <div class="container" id="cmult">
+                Multiple
+            </div>
+            <div class="container" id="csimple">
+                 choix Simple
+            </div>
+            <div class="container" id="ctexte">
+                choix texte
+            </div>
+            <input class="valider" type="submit" name="valider" value="Valider">
+        </form>
+    </div>
+</body>
+
+</html>
