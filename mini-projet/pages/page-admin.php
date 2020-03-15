@@ -5,32 +5,32 @@ session_start();  // démarrage d'une session
 // on vérifie que les variables de session identifiant l'utilisateur existent
 if (isset($_SESSION['login'])) {
     $username = $_SESSION['login'];
-         if (isset($_POST['valider'])) {
-                            $qcm=$_POST['qcm'];
-                            $nbrep=$_POST['nbrep'];
-                            $score=$_POST['score'];
-                            $type=$_POST['choixquest'];
-                            $reponse=array();
-                            $bonnereponse=array();
+    if (isset($_POST['valider'])) {
+        $qcm = $_POST['qcm'];
+        $nbrep = $_POST['nbrep'];
+        $score = $_POST['score'];
+        $type = $_POST['choixquest'];
+        $reponse = array();
+        $bonnereponse = array();
 
-                            for ($i=1; $i <= $nbrep; $i++) { 
-                                $reponse=$_POST['reponse'.$i];
-                                if (in_array( ('rep'.$i) , $_POST['check']) ) {
-                                    $bonnereponse[]=$_POST['reponse'.$i];
-                                }
-                            }
-                            $question=[
-                                'question'=>$qcm,
-                                'nbrep'=>$nbrep,
-                                'reponse' =>$reponse,
-                                'score'=>$score,
-                                'type'=>$type,
-                                'bonnereponse' =>$bonnereponse
-                            ];
+        for ($i = 1; $i <= $nbrep; $i++) {
+            $reponse = $_POST['reponse' . $i];
+            if (in_array(('rep' . $i), $_POST['check'])) {
+                $bonnereponse[] = $_POST['reponse' . $i];
+            }
+        }
+        $question = [
+            'question' => $qcm,
+            'nbrep' => $nbrep,
+            'reponse' => $reponse,
+            'score' => $score,
+            'type' => $type,
+            'bonnereponse' => $bonnereponse
+        ];
 
-                            $_SESSION['tableau'][]=$question;
-                            var_dump($_SESSION['tableau']);   
-                          }
+        $_SESSION['tableau'][] = $question;
+        var_dump($_SESSION['tableau']);
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -44,63 +44,61 @@ if (isset($_SESSION['login'])) {
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
 
     <script>
-        
-        window.addEventListener('load', function () {
+        window.addEventListener('load', function() {
 
-            
+
             var element = document.getElementById('cmult');
-            element.style.display="none";
+            element.style.display = "none";
             var element1 = document.getElementById('csimple');
-            element1.style.display="none";
+            element1.style.display = "none";
             var element2 = document.getElementById('ctexte');
-            element2.style.display="none";
+            element2.style.display = "none";
         });
+
         function changement() {
-                var x = document.getElementById('choixquest').value;
-                if(x=="multiple"){
-                    var element = document.getElementById('cmult');
-                    element.style.display="block";
-                    var element1 = document.getElementById('csimple');
-                    element1.style.display="none";
-                    var element2 = document.getElementById('ctexte');
-                    element2.style.display="none";
-                }
-                if (x=="simple"){
-                    var element = document.getElementById('cmult');
-                    element.style.display="none";
-                    var element1 = document.getElementById('csimple');
-                    element1.style.display="block";
-                    var element2 = document.getElementById('ctexte');
-                    element2.style.display="none";
-                }
-                if(x=="text"){
-                    var element = document.getElementById('cmult');
-                    element.style.display="none";
-                    var element1 = document.getElementById('csimple');
-                    element1.style.display="none";
-                    var element2 = document.getElementById('ctexte');
-                    element2.style.display="block";
-                }
+            var x = document.getElementById('choixquest').value;
+            if (x == "multiple") {
+                var element = document.getElementById('cmult');
+                element.style.display = "block";
+                var element1 = document.getElementById('csimple');
+                element1.style.display = "none";
+                var element2 = document.getElementById('ctexte');
+                element2.style.display = "none";
             }
-
-            function recuperer(){
-                var id_nbrep=document.getElementById('nbrep');
-                if(id_nbrep.value==""){
-                    alert("Donner le nombre de reponses svp");
-                }
-                else{
-                    var element = document.getElementById('cmult');
-                        element.style.display="block";
-                        temp="";
-                    for (let index = 0; index < parseInt(id_nbrep.value); index++) {
-
-                        temp+="<div cla><label> Reponse "+(index+1)+"</label> <input type='text' name='reponse"+(index+1)+"'/> <input type='checkbox' name='check[]' value='rep"+(index+1)+"'/></div>";
-                    }
-                    element.innerHTML=temp;
-                }
+            if (x == "simple") {
+                var element = document.getElementById('cmult');
+                element.style.display = "none";
+                var element1 = document.getElementById('csimple');
+                element1.style.display = "block";
+                var element2 = document.getElementById('ctexte');
+                element2.style.display = "none";
             }
-        
-        </script>
+            if (x == "text") {
+                var element = document.getElementById('cmult');
+                element.style.display = "none";
+                var element1 = document.getElementById('csimple');
+                element1.style.display = "none";
+                var element2 = document.getElementById('ctexte');
+                element2.style.display = "block";
+            }
+        }
+
+        function recuperer() {
+            var id_nbrep = document.getElementById('nbrep');
+            if (id_nbrep.value == "") {
+                alert("Donner le nombre de reponses svp");
+            } else {
+                var element = document.getElementById('cmult');
+                element.style.display = "block";
+                temp = "";
+                for (let index = 0; index < parseInt(id_nbrep.value); index++) {
+
+                    temp += "<div cla><label> Reponse " + (index + 1) + "</label> <input type='text' name='reponse" + (index + 1) + "'/> <input type='checkbox' name='check[]' value='rep" + (index + 1) + "'/></div>";
+                }
+                element.innerHTML = temp;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -113,15 +111,9 @@ if (isset($_SESSION['login'])) {
     </div>
     <div class="formulaire">
         <form action="" method="post">
-            <div class="questtion">
-                <div class="titre-qcm">
-                    <h2>Questions</h2>
-                </div>
-                <div class="qcm">
-                    <textarea name="qcm" id="" cols="30" rows="10"></textarea>
-                </div>
-
-            </div>
+            <div class="menu">
+            <h2>Questions</h2>
+            <textarea name="qcm" id="" cols="50" rows="8"></textarea><br><br>
             <label>Score</label>
             <input type="text" name="score"><br><br>
             <label>Type</label>
@@ -134,17 +126,19 @@ if (isset($_SESSION['login'])) {
                 <label for="nbrep">Nb réponse</label>
                 <input type="text" name="nbrep" id="nbrep" onfocusout="recuperer()">
             </div>
-
             <div class="container" id="cmult">
-                Multiple
+                <input type="text"><input type="checkbox" name="" id="">
             </div>
             <div class="container" id="csimple">
-                 choix Simple
+                <input type="text"><input type="radio" name="" id="">
             </div>
             <div class="container" id="ctexte">
-                choix texte
+                <input type="text">
             </div>
-            <input class="valider" type="submit" name="valider" value="Valider">
+            </div>
+            <div class="valider">
+                <input type="submit" name="valider" value="Valider">
+            </div>
         </form>
     </div>
 </body>

@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+<h1>BIENVENUE DANS LE JEU DES TITANS</h1>
     <form action="" method="post">
         <input type="submit" value="ADMINISTRATEUR">
         <input type="submit" value="JOUEUR">

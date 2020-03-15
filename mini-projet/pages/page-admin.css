@@ -1,17 +1,18 @@
 .header{
     background-color: #24FE41;
     color: white;
-    width: 50%;
+    width: 70%;
     height: 50px;
     margin: 0 auto;
     text-align: center;
     padding: 10px;
 }
 .formulaire{
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
     background-color:white;
     font-family: arial;
+    padding-top: 20px;
 }
 form{
     width: 80%;
@@ -19,32 +20,75 @@ form{
     margin: 0 auto;
     padding: 10px;
     font-family: arial;
+    height: 30rem;
 }
-.questtion{
-    padding-top: 20px;
+.menu{
+    margin-left: 30%;
+}
+/* .questtion{
+    padding: 20px;
     font-family: arial;
-    width: 100%;
+    width: 50%;
+    margin-left: 50px;
+    margin-top: 10px;
 }
-.questtion .titre-qcm{
-    width: 20%;
+.titre-qcm{
+    width: 30%;
     float: left;
 }
-.questtion .qcm{
-    width: 60%;
+.qcm{
+    width: 70%;
+    float: left;
+} */
+/* .mileu {
+    width: 50%;
+    height: 20%;
+    padding: 20px;
 }
+.mileu .score{
+    width: 50%;
+    float: left;
+}
+.text{
+    width: 50%;
+    float: left;
+}
+.bas{
+    width: 50%;
+    height: 20%;
+}
+.choix{
+    width: 50%;
+    float: left;
+}
+.type{
+    width: 50%;
+    float: left;
+}
+.container2{
+    width: 50%;
+    height: 20%;
+} */
 .valider{
-    border: none;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+.valider input{
     background-color: #24FE41;
     color: white;
-    width: 80%;
-    margin-left: 10%;
+    border: none;
     text-align: center;
-    font-family: 'Titillium Web', sans-serif;
-
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
 input, select{
     padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+width: 50%;
 }
-label{
-    font-family: arial;
+.container2{
+    padding-top: 10px;
 }
