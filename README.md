@@ -9,6 +9,7 @@ php, xampp sous linux
 #lien github
 https://github.com/sowcheikh/mini-projet/
 #lien hebergement du projet
+phpodc.epizy.com
 #connexion
 mot de passe admin et login admin
 #fonctionnalités
