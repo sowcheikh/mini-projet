@@ -24,5 +24,17 @@ if (isset($_SESSION['firstname']) && isset($_SESSION['lastname'])) {
         }
         ?>
     </div>
+    <div class="milieu">
+    <form action="" method="post">
+    <label for="">QUESTION</label>
+    <textarea name="" id="" cols="30" rows="10">
+        <?php
+        if (isset($_SESSION['tableu'])) {
+            echo $qcm;
+        }
+        ?>
+    </textarea>
+    </form>
+    </div>
 </body>
 </html>

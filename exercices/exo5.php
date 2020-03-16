@@ -71,30 +71,60 @@ echo $somme; */
     }
 }
 echo"numéro orange" ."</br>";
-foreach ($operateur['orange'] as $valeur) {
-    echo $valeur, " ";
+foreach ($operateur['orange'] as $valeurorange) {
+    echo $valeurorange, " ";
 }
 echo "</br>";
 echo"numéro tigo" ."</br>";
-foreach ($operateur['tigo'] as $valeur) {
-    echo $valeur, " ";
+foreach ($operateur['tigo'] as $valeurtigo) {
+    echo $valeurtigo, " ";
 
 }
 echo "</br>";
 echo"numéro expresso" ."</br>";
-foreach ($operateur['expresso'] as $valeur) {
-    echo $valeur, " ";
+foreach ($operateur['expresso'] as $valeurexpresso) {
+    echo $valeurexpresso, " ";
     echo "</br";
 }
 echo "</br>";
 echo "numero invalide: ". "</br>";
-foreach ($operateur['invalide'] as $valeur) {
-    echo $valeur;
+foreach ($operateur['invalide'] as $valeurinvalide) {
+    echo $valeurinvalide;
 }
-$orange=poucentageOperateur($orange, $nbrCont);
-$tigo=poucentageOperateur($tigo, $nbrCont);
+//$tigo=poucentageOperateur($tigo, $nbrCont);
 /* $expresso=poucentageOperateur($nbrCont, $expresso); */
-$invalid=poucentageOperateur($invalid, $nbrCont);
-echo $orange;
+//$invalid=poucentageOperateur($invalid, $nbrCont);
+//echo $orange;
+echo "
+<table>
+    <thead>
+        <tr>
+            <thead>Série des nombres saisis</thead>
+            <thead>nombre de numéro valide</thead>
+            <thead>% de numéro valide</thead>
+            <thead>nombre de numéo invalide</thead>
+            <thead>% des numéros invalides</thead>
+            <thead>nombre de numéro orange</thead>
+            <thead>% de numero orange</thead>
+            <thead>nombre de numéro tigo</thead>
+            <thead>% de numéro tigo</thead>
+            <thead>nombre de numéro expresso</thead>
+            <thead>% de numéro expresso</thead>
+        </tr>
+    </thead>
+    <tbody>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tbody>
+</table>";
+
 }
 ?>
