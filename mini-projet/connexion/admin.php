@@ -61,6 +61,7 @@ if (!empty($_POST)) {
                 <div class="connexion">
                     <input type="submit" value="Connexion">
                 </div>
+                
             </form>
         </div>
 </body>

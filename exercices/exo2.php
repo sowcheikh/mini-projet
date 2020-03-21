@@ -54,13 +54,13 @@
             // pour chaque ligne
             for ($i = 1; $i <= $NbrLigne; $i++) {
             ?>
-                <tr>
+                <tr style="background-color: #65537A">
                     <?php
                     // pour chaque colonne (de la ligne)
                     for ($j = 1; $j <= $NbrCol; $j++) {
                         $d++;
                     ?>
-                        <td>
+                        <td style="background-color: #677F35">
                             <?php
                             echo $d; // CONTENU de la CELLULE i x j 
                             ?></td>
