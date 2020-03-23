@@ -25,7 +25,7 @@ include( 'fonction.php' );
 
 if ( isset( $_POST['calculer'] ) ) {
     $n = $_POST['n'];
-    $_SESSION['nombre']=$n;
+    $_SESSION['nombre'] = $n;
     if ( !empty( $_POST['n'] ) && preg_match( "/^[0-9 ]+$/", $n ) ) {
         if ( $n > 10000 ) {
             $T1 = array();
@@ -39,65 +39,89 @@ if ( isset( $_POST['calculer'] ) ) {
                 'inferieur' => [],
                 'superieur' => []
             ];
-            $_SESSION['supinf'] = $T;
+            //$_SESSION['supinf'] = $T;
+            $_SESSION['tabInf']=$T['inferieur'];
+            $_SESSION['tabSup']=$T['superieur'];
             $resultatMoyenne = moyenne( $T1 );
-            $_SESSION['moyenne']=$resultatMoyenne;
+            $_SESSION['moyenne'] = $resultatMoyenne;
         }
         echo '</br>';
+    } else echo'veuillez entrer un nombre';
+}
+?>
+<h4>la moyenne des nombres premiers est : <?php echo $_SESSION['moyenne'];?></h4>
+<?php
+$taille1 = count( $_SESSION['premier'] );
+$tailleinf = count( $_SESSION['tabInf']);
+$_SESSION['inf'] = $tailleinf;
+$taillesup = count( $_SESSION['tabSup'] );
+$_SESSION['sup'] = $taillesup;
+$d = ceil($taille1/100);
+
+
+//$tailleTab = $_GET['p']*100;
+
+$tailletabInf = $_GET['p']*100;
+$tailleTabSup = $_GET['p']*100;
+
+$diffInf = $tailletabInf-100;
+$diffSup = $tailleTabSup-100;
+?>
+<?php
+for ( $i = 0; $i < $taille1; $i++ ) {
+    if ( $_SESSION['premier'][$i] > $_SESSION['moyenne'] ) {
+        array_push( $_SESSION['tabSup'], $_SESSION['premier'][$i] );
+    } else {
+        array_push( $_SESSION['tabInf'], $_SESSION['premier'][$i] );
+    }
+}
+echo 'les nombres premiers inférieur à la moyenne sont: ' . '</br>';
+?>
+<div class="tableau">
+<div class="inf">
+<table border = '1'>
+<?php
+while ( $diffInf <= $tailletabInf ) {
+    for ( $i = 0; $i < 10; $i++ ) {
+        echo '<tr>';
+        for ( $j = 0; $j < 10; $j++ ) {
+            if ( array_key_exists( $diffInf, $_SESSION['tabInf']) ) {
+                echo '<td>'.$_SESSION['tabInf'][$diffInf].'</td>';
+            }
+            $diffInf++;
+        }
+        echo '</tr>';
     }
 }
 ?>
+</table>
+</div>
 
-<h2>la liste des nombres de 1 à <?php echo $_SESSION['nombre'] ?></h2>
-            <table border = '1'>
-            <?php
-            $taille1 = count($_SESSION['premier']);
-            $d = $taille1/100;
-            $tailleTab = $_GET['p']*100;
-            $diff = $tailleTab-100;
-            while ( $diff <= $tailleTab ) {
+<?php
+echo 'les nombres premiers supérieur à la moyenne sont: ' . '</br>';
+?>
+<div class="sup">
+<table border = '1'>
+<?php
+while ( $diffSup <= $tailleTabSup ) {
+    for ( $i = 0; $i < 10; $i++ ) {
+        echo '<tr>';
+        for ( $j = 0; $j < 10; $j++ ) {
+            if ( array_key_exists( $diffSup, $_SESSION['tabSup'] ) ) {
+                echo '<td>'.$_SESSION['tabSup'][$diffSup].'</td>';
+            }
+            $diffSup++;
+        }
+        echo '</tr>';
+    }
+}
+?>
+</table>
+</div>
+</div>
+<?php
+for ( $i = 1; $i < $d/2; $i++ ) {
 
-                for ( $i = 0; $i < 10; $i++ ) {
-                    echo '<tr>';
-                    for ( $j = 0; $j < 10; $j++ ) {
-                        if ( array_key_exists( $diff, $_SESSION['premier'] ) ) {
-                            echo '<td>'.$_SESSION['premier'][$diff].'</td>';
-                        }
-                        $diff++;
-                    }
-                    echo '</tr>';
-                }
-            }
-            for ( $i = 1; $i < $d; $i++ ) {
-
-                echo "<a href='exo1.php?p=$i'>$i</a>";
-            }
-            ?>
-            </table>
-            <?php
-            echo 'la moyenne est: ' . '</br>';
-            echo $_SESSION['moyenne'];
-            echo '</br>';
-            ?>
-            <?php
-             for ( $i = 0; $i < $taille1; $i++ ) {
-                if ( $_SESSION['premier'][$i] > $_SESSION['moyenne'] ) {
-                    array_push( $_SESSION['supinf']['superieur'], $_SESSION['premier'][$i] );
-                } else {
-                    array_push( $_SESSION['supinf']['inferieur'], $_SESSION['premier'][$i] );
-                }
-            }
-            echo 'les nombres premiers inférieur à la moyenne sont: ' . '</br>';
-            foreach ( $_SESSION['supinf']['inferieur'] as $inferieur ) {
-                echo $inferieur. ' ';
-            }
-            ?>
-            <table>
-            </table>
-            <?php
-            echo '</br>';
-            echo 'les nombres premiers supérieur à la moyenne sont: ' . '</br>';
-            foreach ( $_SESSION['supinf']['superieur'] as $superieur ) {
-                echo $superieur. ' ';
-            }
-            ?>
+    echo "<a href='exo1.php?p=$i'>$i</a>";
+}
+?>

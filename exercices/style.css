@@ -5,3 +5,29 @@ input {
     background: rgba(255,255,255,0.5);
     margin: 0 0 10px 0;
 }
+table{
+    width: 500px;
+    height: 500px;
+    background-color: green;
+}
+.tableau{
+    width: 100%;
+    height: 30rem;
+}
+.inf{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+.sup{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+a{
+    padding: 10px;
+    text-decoration: none;
+}
+h4{
+    text-align: center;
+}
