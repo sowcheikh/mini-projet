@@ -40,8 +40,8 @@ if ( isset( $_POST['calculer'] ) ) {
                 'superieur' => []
             ];
             //$_SESSION['supinf'] = $T;
-            $_SESSION['tabInf']=$T['inferieur'];
-            $_SESSION['tabSup']=$T['superieur'];
+            $_SESSION['tabInf'] = $T['inferieur'];
+            $_SESSION['tabSup'] = $T['superieur'];
             $resultatMoyenne = moyenne( $T1 );
             $_SESSION['moyenne'] = $resultatMoyenne;
         }
@@ -49,15 +49,15 @@ if ( isset( $_POST['calculer'] ) ) {
     } else echo'veuillez entrer un nombre';
 }
 ?>
-<h4>la moyenne des nombres premiers est : <?php echo $_SESSION['moyenne'];?></h4>
+<h4>la moyenne des nombres premiers est : <?php echo $_SESSION['moyenne'];
+?></h4>
 <?php
 $taille1 = count( $_SESSION['premier'] );
-$tailleinf = count( $_SESSION['tabInf']);
+$tailleinf = count( $_SESSION['tabInf'] );
 $_SESSION['inf'] = $tailleinf;
 $taillesup = count( $_SESSION['tabSup'] );
 $_SESSION['sup'] = $taillesup;
-$d = ceil($taille1/100);
-
+$d = ceil( $taille1/100 );
 
 //$tailleTab = $_GET['p']*100;
 
@@ -77,15 +77,15 @@ for ( $i = 0; $i < $taille1; $i++ ) {
 }
 echo 'les nombres premiers inférieur à la moyenne sont: ' . '</br>';
 ?>
-<div class="tableau">
-<div class="inf">
+<div class = 'tableau'>
+<div class = 'inf'>
 <table border = '1'>
 <?php
 while ( $diffInf <= $tailletabInf ) {
     for ( $i = 0; $i < 10; $i++ ) {
         echo '<tr>';
         for ( $j = 0; $j < 10; $j++ ) {
-            if ( array_key_exists( $diffInf, $_SESSION['tabInf']) ) {
+            if ( array_key_exists( $diffInf, $_SESSION['tabInf'] ) ) {
                 echo '<td>'.$_SESSION['tabInf'][$diffInf].'</td>';
             }
             $diffInf++;
@@ -100,7 +100,7 @@ while ( $diffInf <= $tailletabInf ) {
 <?php
 echo 'les nombres premiers supérieur à la moyenne sont: ' . '</br>';
 ?>
-<div class="sup">
+<div class = 'sup'>
 <table border = '1'>
 <?php
 while ( $diffSup <= $tailleTabSup ) {
@@ -120,8 +120,12 @@ while ( $diffSup <= $tailleTabSup ) {
 </div>
 </div>
 <?php
+echo'<div class="paginaation">';
+echo "<a href='index.php'>&laquo;</a>";
 for ( $i = 1; $i < $d/2; $i++ ) {
 
-    echo "<a href='exo1.php?p=$i'>$i</a>";
+    echo"<a href='exo1.php?p=$i'>$i</a>";
 }
+echo"<a href='#'>&raquo;</a>";
+echo'</div>';
 ?>

@@ -16,19 +16,20 @@
  <?php
 if(isset($_POST['submit'])){
     if(!empty($_POST['mot']) && preg_match("/^[A-Za-z'çéèêûîôâ]+/",$_POST['mot'])){
-        if(@EstVide($_POST['mot'])){
             $val= $_POST['mot'];
-            $mot= CompteMot(" ", $val);
+            $mot= CompteMot2(" ", $val);
+            $N=[];
                 foreach($mot as $value){
                     if(longueurMot($value)<=20){
-                            $correcte[]=$value;    
+                            $N[]=$value;    
+                    } else {
+                        echo "les mots ne doivent pas dépassé 20 caratères!!";
                     }
                 }
-        } 
     //appelle de la fonction Afficher
-       AfficherTab($correcte);
+       AfficherTab($N);
        
-       $nbrLettreMm= ContientlettreM($correcte);
+       $nbrLettreMm= ContientlettreM($N);
       
        print "<br><br>le nombre de mot ayant la letre m ou M est ".$nbrLettreMm;
     }else{
@@ -36,8 +37,7 @@ if(isset($_POST['submit'])){
       echo"saisir un mot";
        
     }
-    
-     
+       
 }
  ?>
  </body>

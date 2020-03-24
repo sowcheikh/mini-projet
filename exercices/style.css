@@ -8,7 +8,7 @@ input {
 table{
     width: 500px;
     height: 500px;
-    background-color: green;
+    background-color: #4CAF50;
 }
 .tableau{
     width: 100%;
@@ -24,9 +24,20 @@ table{
     width: 50%;
     height: 100%;
 }
+.pagination {
+    display: inline-block;
+    width: 50%;
+    margin: 0 auto;
+  }
 a{
-    padding: 10px;
+    color: black;
+    float: left;
+    padding: 8px 16px;
     text-decoration: none;
+}
+a:hover{
+    background-color: #4CAF50;
+    color: white;
 }
 h4{
     text-align: center;
