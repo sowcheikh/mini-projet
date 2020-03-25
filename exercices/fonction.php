@@ -125,5 +125,70 @@ function Pourcent( $N, $n ) {
 
     return $pourcent;
 }
+//exo3
+function verifcompteur($valeur,$longueur){
+    $i=0;
+    $is_valid=true;
+    do {
+        $i++;
+    } while (!empty($valeur[$i]));
+  
+  
+    if ($i>$longueur) {
+        $is_valid=false;
+    }
+    return $is_valid;
+  }
+  function comptemots($mot,$caractere){
+    $i=0;
+    $verifM=false;
+    do {
+        if ($mot[$i]==$caractere or $mot[$i]==strtoupper($caractere)) {
+            $verifM=true;
+            break;
+        }
+        $i++;
+        
+    } while (!empty($mot[$i]));
+  
+    return $verifM;
+  }
+
+  function est_caractere($car){
+	return (($car >='a' && $car <='z') || ($car >='A' && $car <='Z'));
+}
+
+  function verifmot($mot){
+    $i=0;
+    while (isset($mot[$i])) {
+      if(est_caractere($mot[$i])==FALSE){
+        return FALSE;
+      }
+      $i++;
+    }
+    if($i==0){
+      return FALSE;
+    }
+    return TRUE;
+  }  
+
+function est_chiffre($car){
+	return ($car >='0' && $car <='9');
+}
+
+function verifnombre($mot){
+  $i=0;
+  while (isset($mot[$i])) {
+    if(est_chiffre($mot[$i])==FALSE){
+      return FALSE;
+    }
+    $i++;
+  }
+  if($i==0){
+    return FALSE;
+  }
+  return TRUE;
+}
+
 
 ?>

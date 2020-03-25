@@ -9,10 +9,13 @@
 </head>
 
 <body>
+<div class="form-style-2">
+<div class="form-style-2-heading">Entrer vos numéros de téléphones</div>
     <form action="" method="post">
-        <textarea name="texte" cols="30" rows="10"></textarea>
-        <input type="submit" name="valider" value="valider">
+        <textarea name="texte" cols="30" rows="10" class="textarea-field"></textarea>
+        <input class="valider" type="submit" name="valider" value="valider">
     </form>
+</div>
 </body>
 
 </html>

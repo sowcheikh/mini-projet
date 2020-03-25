@@ -13,10 +13,13 @@ session_start();
 </head>
 
 <body>
+<div class="form-style-2">
+<div class="form-style-2-heading">Nombre Premiers</div>
 <form action = '' method = 'post'>
 <input type = 'text' name = 'n' placeholder = 'entrer un nombre superieur à 10000'>
-<input type = 'submit' value = 'calculer' name = 'calculer'>
+<input class="valider" type = 'submit' value = 'calculer' name = 'calculer'>
 </form>
+</div>
 </body>
 </html>
 
