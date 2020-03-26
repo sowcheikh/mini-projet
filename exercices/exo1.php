@@ -27,8 +27,9 @@ session_start();
 include( 'fonction.php' );
 
 if ( isset( $_POST['calculer'] ) ) {
-    $n = $_POST['n'];
-    $_SESSION['nombre'] = $n;
+    $n = (int)$_POST['n'];
+    $_SESSION['nombre']=$n;
+    unset($_SESSION['nombre']);
     if ( !empty( $_POST['n'] ) && preg_match( "/^[0-9 ]+$/", $n ) ) {
         if ( $n > 10000 ) {
             $T1 = array();
@@ -62,10 +63,8 @@ $taillesup = count( $_SESSION['tabSup'] );
 $_SESSION['sup'] = $taillesup;
 $d = ceil( $taille1/100 );
 
-//$tailleTab = $_GET['p']*100;
-
-$tailletabInf = $_GET['p']*100;
-$tailleTabSup = $_GET['p']*100;
+$tailletabInf = $_GET["p"]*100;
+$tailleTabSup = $_GET["p"]*100;
 
 $diffInf = $tailletabInf-100;
 $diffSup = $tailleTabSup-100;
