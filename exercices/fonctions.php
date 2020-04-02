@@ -1,6 +1,6 @@
 <?php
 //fonction caractère
-$caracteres=[
+$caracteres = [
     ['a', 'A'], ['b', 'B'], ['c', 'C'], ['d', 'D'], ['e', 'E'], ['f', 'F'], ['g', 'G'], ['h', 'H'],
     ['i', 'I'], ['j', 'J'], ['k', 'K'], ['l', 'L'], ['m', 'M'], ['n', 'N'], ['o', 'O'], ['p', 'P'],
     ['q', 'Q'], ['r', 'R'], ['s', 'S'], ['t', 'T'], ['u', 'V'], ['w', 'W'], ['x', 'X'], ['y', 'Y'],
@@ -13,28 +13,28 @@ function est_caractere($car)
 //fonction qui retourne seulement des miniscule
 function car_to_lower($car)
 {
-   global $caracteres;
-   foreach($caracteres as $letter){
-       for ($i=0; $i <my_strlen($letter) ; $i++) { 
-           if ($letter[$i]==$car) {
-               return $letter[0];
-           }
-       }
-   }
-   return $car;
+    global $caracteres;
+    foreach ($caracteres as $letter) {
+        for ($i = 0; $i < my_strlen($letter); $i++) {
+            if ($letter[$i] == $car) {
+                return $letter[0];
+            }
+        }
+    }
+    return $car;
 }
 //fonction qui retourne seulement des majuscule
 function car_to_upper($car)
 {
     global $caracteres;
-   foreach($caracteres as $letter){
-       for ($i=0; $i <my_strlen($letter) ; $i++) { 
-           if ($letter[$i]==$car) {
-               return $letter[1];
-           }
-       }
-   }
-   return $car;
+    foreach ($caracteres as $letter) {
+        for ($i = 0; $i < my_strlen($letter); $i++) {
+            if ($letter[$i] == $car) {
+                return $letter[1];
+            }
+        }
+    }
+    return $car;
 }
 //fonction chiffre
 function is_entier($car)
@@ -83,9 +83,9 @@ function is_valid($mot)
 //fonction qui vérifie si un caractère est dans une chaine(m ou M)
 function is_car_in_string($chaine, $car)
 {
-    $resultat= false;
+    $resultat = false;
     for ($i = 0; $i < my_strlen($chaine); $i++) {
-        if ($chaine[$i] === car_to_lower($car) || $chaine[$i]=== car_to_upper($car) ) {
+        if ($chaine[$i] === car_to_lower($car) || $chaine[$i] === car_to_upper($car)) {
             $resultat = true;
         } else {
             $resultat = false;
@@ -101,4 +101,13 @@ function inverse_casse($car)
     } else {
         return car_to_lower($car);
     }
+}
+// foncion phrase valide 
+function is_valid_phrase($chaine)
+{
+    $n = my_strlen($chaine);
+    if (preg_match('/^[A-Z]/', $chaine) && ($chaine[$n - 1] === '.' || $chaine[$n - 1] === '!' || $chaine[$n - 1] === '?')) {
+        return true;
+    }
+    return false;
 }

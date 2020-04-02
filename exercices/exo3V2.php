@@ -15,8 +15,8 @@
         <div class="form-group">
             <label for="nbr">Donnez le nombre de mots</label>
             <input type="text" name="nbr" id="nbr" value="<?= @$_POST['nbr'] ?>">
-            <input type="submit" name="valid" value="Valider">
-            <input type="reset" value="Annuler">
+            <button class="btn" name="valid">Valider</button>
+            <button class="btn">Annuler</button>
         </div>
         <?php
         if (isset($_POST['nbr'])) {
