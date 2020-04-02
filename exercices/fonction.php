@@ -66,7 +66,7 @@ function EstVide( $chaine ) {
         return false;
     }
 }
-//function qui compte le nmobre de lettre dans un mot ou chaine
+//function qui compte le nombre de lettre dans un mot ou chaine
 
 function longueurMot( $chaine="" ) {
     $i = 0;
@@ -78,7 +78,7 @@ function longueurMot( $chaine="" ) {
     return $compt;
 }
 
-//function qui compt le nombre de mot dans un tab ou chaine
+//function qui compte le nombre de mot dans un tab ou chaine
 
 function CompteMot2( $delime, $chaine ) {
     $i = 0;
@@ -189,6 +189,5 @@ function verifnombre($mot){
   }
   return TRUE;
 }
-
 
 ?>

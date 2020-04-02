@@ -14,6 +14,8 @@
 	</li>
 	<li><a href="index.php?page=exo3">EXO3</a>
     </li>
+    <li><a href="index.php?page=exo3V2">EXO3V2</a>
+    </li>
     <li><a href="index.php?page=exo4">EXO4</a>
 	</li>
     <li><a href="index.php?page=exo5">EXO5</a>
