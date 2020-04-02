@@ -25,16 +25,18 @@
 <?php
 
 if (isset($_POST['valider'])) {
+    $texte=$_POST['texte'];
     if (is_valid_phrase($_POST['texte'])) {
-        echo 'cest une phrase';
+        $decoupe = preg_split('/(?<=[.?!])\s+/', $texte,  -1, PREG_SPLIT_NO_EMPTY);
+        echo '</br>';
+        foreach($decoupe as $texte){
+            echo $texte;
+            echo '</br>';
+        }
+        
     } else {
-        echo "ce n'est pas une phrase";
+        echo "ce n'est pas une phrase "."</br>";
     }
+    //var_dump($decoupe);
 }
-
-
-
-
-
-
 ?>
