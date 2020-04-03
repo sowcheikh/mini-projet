@@ -106,7 +106,7 @@ function inverse_casse($car)
 function is_valid_phrase($chaine)
 {
     $n = my_strlen($chaine);
-    if (preg_match('/^[A-Z]/', $chaine) && ($chaine[$n - 1] === '.' || $chaine[$n - 1] === '!' || $chaine[$n - 1] === '?')) {
+    if (preg_match('/^[A-Z|a-z]/', $chaine) && ($chaine[$n - 1] === '.' || $chaine[$n - 1] === '!' || $chaine[$n - 1] === '?')) {
         return true;
     }
     return false;

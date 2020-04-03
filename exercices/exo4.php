@@ -25,18 +25,26 @@
 <?php
 
 if (isset($_POST['valider'])) {
-    $texte=$_POST['texte'];
+    $texte = $_POST['texte'];
     if (is_valid_phrase($_POST['texte'])) {
-        $decoupe = preg_split('/(?<=[.?!])\s+/', $texte,  -1, PREG_SPLIT_NO_EMPTY);
+        $N = preg_split('/(?<=[.?!])\s+/', $texte,  -1, PREG_SPLIT_NO_EMPTY);
         echo '</br>';
-        foreach($decoupe as $texte){
-            echo $texte;
-            echo '</br>';
+        foreach ($N as $key => $texte) {
+            if (my_strlen($texte) <= 20) {
+                echo ucfirst($texte);
+                echo '</br>';
+            } elseif(my_strlen($texte)>20) {
+            echo 'la phrase N°'. $key. ' ne doit pas dépassée 200 caractères!!'. '</br>';
+            }
         }
-        
-    } else {
-        echo "ce n'est pas une phrase "."</br>";
+    } elseif (empty($_POST['texte'])) {
+        echo "veuillez entrer une phrase!! " . "</br>";
     }
-    //var_dump($decoupe);
+    
+    
+    else {
+        echo "ce n'est pas une phrase!! " . "</br>";
+    }
+    //var_dump($N);
 }
 ?>
